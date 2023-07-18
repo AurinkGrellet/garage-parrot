@@ -2,4 +2,42 @@
 
 {% block title %}Garage Vincent Parrot{% endblock %}
 {% block body %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th class="text-left align-top" scope="col">
+                Prix
+            </th>
+            <th class="text-left align-top" scope="col">
+                Année de mise en circulation
+            </th>
+            <th class="text-left align-top" scope="col">
+                Kilométrage
+             </th>
+            <th class="text-center align-top" scope="col">
+                &nbsp;
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for car in cars %}
+            <tr>
+                <td style='word-wrap: break-word;min-width: 500px;max-width: 500px'>
+                    <h5 class="text-info">
+                        {{ car.price }}
+                    </h5>
+                </td>
+                <td class="text-center">
+                    {{ car.year }}
+                </td>
+                <td class="text-center">
+                    {{ car.km }}
+                </td>
+                <td class="text-center">
+                    <img src="images/{{ car.image }}">
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
 {% endblock %}
