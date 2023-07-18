@@ -1,0 +1,59 @@
+@font-face {
+    font-family: 'Rajdhani';
+    src: url(../public/fonts/Rajdhani-Regular.ttf);
+}
+
+@font-face {
+    font-family: 'Barlow';
+    src: url(../public/fonts/Barlow-Regular.ttf);
+}
+
+body {
+    background: #F2F2F2;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-family: 'Rajdhani';
+    
+}
+
+p, a {
+    font-family: 'Barlow';
+}
+
+p {
+    color: #262526;
+}
+
+a {
+    color: #D9777F;
+}
+
+a:hover {
+    color: #D92332;
+}
+
+nav {
+    background-color: #262526;
+}
+nav a {
+    color: #F2F2F2;
+}
+
+footer {
+    background-color: #262526;
+    color: #F2F2F2;
+}
+
+button {
+    background-color: #262526;
+    color: #F2F2F2;
+}
+
+.warning {
+    color: #D94350;
+}
+
+.emphasize {
+    color: #D94350;
+}

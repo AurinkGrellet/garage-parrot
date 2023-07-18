@@ -1,11 +1,11 @@
-{% extends 'base.html.twig' %}
+{% extends "basechart.html.twig" %}
 
-{% block title %}New User{% endblock %}
+{% block title %}Nouvel employé{% endblock %}
 
 {% block body %}
-    <h1>Create new User</h1>
+    <h1>Nouvel employé</h1>
 
     {{ include('user/_form.html.twig') }}
 
-    <a href="{{ path('app_user_index') }}">back to list</a>
+    <a href="{{ path('admin')}}">Retour</a>
 {% endblock %}
