@@ -44,6 +44,9 @@ footer {
     background-color: #262526;
     color: #F2F2F2;
 }
+footer p {
+    color: #F2F2F2;
+}
 
 button {
     background-color: #262526;
@@ -55,5 +58,5 @@ button {
 }
 
 .emphasize {
-    color: #D94350;
+    color: #D9777F;
 }

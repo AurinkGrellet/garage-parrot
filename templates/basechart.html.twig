@@ -45,6 +45,10 @@
                         <li class="nav-item">
                             <a class="nav-link warning" href="{{ path('app_logout') }}">Se déconnecter</a>
                         </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link emphasize" href="{{ path('app_login') }}">Se connecter</a>
+                    </li>
                     {% endif %}
                 </ul>
             </div>
@@ -53,9 +57,10 @@
 {% endblock %}
 {% block body %}{% endblock %}
 {% block footer %}
-    <footer class="text-center text-lg-start">
+    <footer class="mt-auto pt-2 text-center text-lg-start">
         <p class="text-center">
             Horaires d'ouverture du garage :
+            <br/>
             {{ include('_openinghours.html.twig') }}
         </p>
         <p class="text-center">
