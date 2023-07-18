@@ -30,10 +30,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
-    #[ORM\Column(type: Types::TEXT)]
+    #[ORM\Column(length: 180)]
     private ?string $firstname = null;
 
-    #[ORM\Column(type: Types::TEXT)]
+    #[ORM\Column(length: 180)]
     private ?string $lastname = null;
 
     public function getId(): ?int

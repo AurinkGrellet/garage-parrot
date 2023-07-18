@@ -1,0 +1,14 @@
+{% extends "basechart.html.twig" %}
+
+{% block title %}Accès administrateur{% endblock %}
+{% block body %}
+    <h1 class="text-center">Bienvenue sur votre espace personnel, M. Parrot.</h1>
+
+    <h2>Vous pouvez modifier les horaires d'ouverture ci-dessous :</h2>
+
+
+    <h2 class="mb-4">Vous pouvez modifier les informations affichées sur la page d'accueil ci-dessous :</h2>
+    <div class="text-center">
+        {{ form(form) }}
+    </div>
+{% endblock %}
