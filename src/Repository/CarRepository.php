@@ -21,6 +21,14 @@ class CarRepository extends ServiceEntityRepository
         parent::__construct($registry, Car::class);
     }
 
+    public function findAllOrderBy($field, $order): array
+    {
+        return $this->createQueryBuilder('c')
+                ->orderBy('f.'.$field, $order)
+                ->getQuery()
+                ->getResult();
+    }
+
 //    /**
 //     * @return Car[] Returns an array of Car objects
 //     */

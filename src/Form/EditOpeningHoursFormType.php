@@ -18,7 +18,8 @@ class EditOpeningHoursFormType extends AbstractType
                 'attr' => array(
                     'rows' => 8,
                     'cols' => 112
-                )
+                ),
+                'required' => true
             ))
             ->add('submit', SubmitType::class, array(
                 'label' => 'Enregistrer'

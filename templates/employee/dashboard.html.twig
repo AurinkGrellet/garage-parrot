@@ -1,0 +1,16 @@
+{% extends "basechart.html.twig" %}
+
+{% block title %}Accès employé{% endblock %}
+{% block body %}
+    <h1 class="text-center">Bienvenue sur votre espace personnel, {{ commonName }}.</h1>
+
+    <h2 class="m-3">Les actions à votre disposition sont les suivantes : </h2>
+    <ul>
+        <li>
+            <a href="{{ path('newCar') }}">Gestion des voitures</a>
+        </li>
+        <li>
+            <a href="#">Gestion des témoignages</a>
+        </li>
+    </ul>
+{% endblock %}

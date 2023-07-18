@@ -16,18 +16,22 @@ class UserFormType extends AbstractType
     {
         $builder
             ->add('firstname', null, [
-                'label' => 'Prénom'
+                'label' => 'Prénom',
+                'required' => true
             ])
             ->add('lastname', null, [
-                'label' => 'Nom de famille'
+                'label' => 'Nom de famille',
+                'required' => true
             ])
             ->add('email', null, [
-                'label' => 'E-mail'
+                'label' => 'E-mail',
+                'required' => true
             ])
             ->add('plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'label' => 'Mot de passe',
+                'required' => true,
                 'mapped' => false,
                 'attr' => ['autocomplete' => 'new-password'],
                 'constraints' => [

@@ -1,0 +1,9 @@
+{% extends "basechart.html.twig" %}
+
+{% block title %}Ajouter une voiture{% endblock %}
+{% block body %}
+    {% if carAdded %}
+        <h3>Voiture ajoutée avec succès.</h3>
+    {% endif %}
+    {{ form(form) }}
+{% endblock %}

@@ -3,7 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\CarRepository;
-use Doctrine\DBAL\Types\Types;
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CarRepository::class)]
@@ -14,29 +14,29 @@ class Car
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
-    private ?string $price = null;
+    #[ORM\Column]
+    private ?int $price = null;
 
     #[ORM\Column(length: 255)]
     private ?string $image = null;
 
-    #[ORM\Column(length: 4)]
-    private ?string $year = null;
+    #[ORM\Column]
+    private ?int $year = null;
 
-    #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: '0')]
-    private ?string $km = null;
+    #[ORM\Column]
+    private ?int $km = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getPrice(): ?string
+    public function getPrice(): ?int
     {
         return $this->price;
     }
 
-    public function setPrice(string $price): static
+    public function setPrice(int $price): static
     {
         $this->price = $price;
 
@@ -55,24 +55,24 @@ class Car
         return $this;
     }
 
-    public function getYear(): ?string
+    public function getYear(): ?int
     {
         return $this->year;
     }
 
-    public function setYear(string $year): static
+    public function setYear(DateTime $year): static
     {
-        $this->year = $year;
+        $this->year = $year->format('Y');
 
         return $this;
     }
 
-    public function getKm(): ?string
+    public function getKm(): ?int
     {
         return $this->km;
     }
 
-    public function setKm(string $km): static
+    public function setKm(int $km): static
     {
         $this->km = $km;
 
