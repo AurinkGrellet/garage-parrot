@@ -31,13 +31,15 @@ class NewCarController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // managing the image
+            /* managing the image */
             $imageDir = $this->getParameter('kernel.project_dir') . '/public/images/';
             $image = $form->get('image')->getData();
+            // save
             $imageOriginalName = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
             $safeFileName = $slugger->slug($imageOriginalName);
             $newFilename = $safeFileName.'-'.uniqid().'.'.$image->guessExtension();
             $image->move($imageDir, $newFilename);
+            // resize
             $optimizer = new ImageOptimizer();
             $optimizer->resize($newFilename);
             $car->setImage($newFilename);

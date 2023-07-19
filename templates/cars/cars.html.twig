@@ -1,43 +1,53 @@
 {% extends "basechart.html.twig" %}
 
+
 {% block title %}Garage Vincent Parrot{% endblock %}
 {% block body %}
 <table class="table table-striped">
     <thead>
         <tr>
-            <th class="text-left align-top" scope="col">
-                Prix
+            <th class="text-center align-top" scope="col">
+                <div>Prix</div>
+                <div>
+                    <label for="pricelow">Min</label>
+                    <input class="form-control" id="pricelow" type="number" onchange="filter('pricelow')" />
+                </div>
+                <div>
+                    <label for="pricelow">Max</label>
+                    <input class="form-control" id="pricehigh" class="ml-1" type="number" onchange="filter('pricehigh');" />
+                </div>
             </th>
             <th class="text-left align-top" scope="col">
-                Année de mise en circulation
+                <div>Année de mise en circulation</div>
+                <div>
+                    <label for="year"></label>
+                    <input class="form-control" id="year" class="ml-1" type="number" onchange="filter('year');" />
+                </div>
             </th>
             <th class="text-left align-top" scope="col">
-                Kilométrage
+                <div>Kilométrage</div>
+                <div>
+                    <label for="km"></label>
+                    <input class="form-control" id="km" class="ml-1" type="number" onchange="filter('km');" />
+                    <select class="form-select" aria-label="Type de filtre" id="kmType">
+                        <option selected>>=</option>
+                        <option><=</option>
+                    </select>
+                </div>
              </th>
+            <th class="text-center align-top" scope="col">
+                Images
+            </th>
             <th class="text-center align-top" scope="col">
                 &nbsp;
             </th>
         </tr>
     </thead>
-    <tbody>
-        {% for car in cars %}
-            <tr>
-                <td style='word-wrap: break-word;min-width: 500px;max-width: 500px'>
-                    <h5 class="text-info">
-                        {{ car.price }}
-                    </h5>
-                </td>
-                <td class="text-center">
-                    {{ car.year }}
-                </td>
-                <td class="text-center">
-                    {{ car.km }}
-                </td>
-                <td class="text-center">
-                    <img src="images/{{ car.image }}">
-                </td>
-            </tr>
-        {% endfor %}
+    <tbody id="car-loop-container">
+        {{ include('cars/loop.html.twig') }}
     </tbody>
 </table>
+{% endblock %}
+{% block javascripts %}
+    <script type="text/javascript" src="../js/ajax.js"></script>  
 {% endblock %}

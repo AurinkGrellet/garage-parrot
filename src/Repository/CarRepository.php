@@ -29,20 +29,33 @@ class CarRepository extends ServiceEntityRepository
                 ->getResult();
     }
 
-//    /**
-//     * @return Car[] Returns an array of Car objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('c')
-//            ->andWhere('c.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('c.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    /**
+     * @return Car[] Returns an array of Car objects
+     */
+    public function filterByField($field, $value, $comparator): array
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.'.$field.' '.$comparator.' :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    /**
+     * @return Car[] Returns an array of Car objects
+     */
+    public function filterByFieldBetween($field, $valuelow, $valuehigh): array
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.'.$field.' >= :valmin')
+            ->andWhere('c.'.$field.' <= :valmax')
+            ->setParameter('valmin', $valuelow)
+            ->setParameter('valmax', $valuehigh)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 
 //    public function findOneBySomeField($value): ?Car
 //    {
