@@ -1,0 +1,18 @@
+{% extends 'basechart.html.twig' %}
+
+{% block title %}Contacter l'atelier{% endblock %}
+
+{% block body %}
+<h2>
+    Vous pouvez nous contacter de différentes façons :
+</h2>
+<ul>
+    <li>
+        Par téléphone, au <b>{{ phone }}</b>
+    </li>
+    <li>
+        Ou alors en remplissant le formulaire ci-dessous :
+    </li>
+</ul>
+{{ form(form) }}
+{% endblock %}

@@ -21,18 +21,16 @@
                             <a class="nav-link active" href="{{ path('homepage') }}">Accueil</a>
                         {% endif %}
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('cars') }}">Voitures</a>
+                    </li>
                     {% if is_granted('ROLE_EMPLOYEE') %}
                         <li class="nav-item">
                             <a class="nav-link" href="{{ path('newCar') }}">Ajouter une voiture</a>
                         </li>
                         <li class="nav-item">
-                            <!-- TODO: link to page for managing clients testimonials -->
+                            <a class="nav-link" href="{{ path('manage_testimony') }}">Modérer les témoignages</a>
                         </li>
-                    {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('cars') }}">Voitures</a>
-                    </li>
-                    <!-- TODO: link to clients testimonials -->
                     {% endif %}
                 </ul>
                 <ul class="navbar-nav ml-auto text-right">
@@ -41,11 +39,17 @@
                             <a class="nav-link" href="{{ path('add_employee') }}">Ajouter un employé</a>
                         </li>
                     {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('testimony') }}">Témoignages</a>
+                    </li>
                     {% if app.user %}
                         <li class="nav-item">
                             <a class="nav-link warning" href="{{ path('app_logout') }}">Se déconnecter</a>
                         </li>
                     {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_contact') }}">Nous contacter</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link emphasize" href="{{ path('app_login') }}">Se connecter</a>
                     </li>

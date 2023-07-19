@@ -21,7 +21,7 @@ p, a {
     font-family: 'Barlow';
 }
 
-p {
+p, li {
     color: #262526;
 }
 
