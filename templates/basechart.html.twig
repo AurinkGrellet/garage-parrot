@@ -38,10 +38,11 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ path('add_employee') }}">Ajouter un employé</a>
                         </li>
-                    {% endif %}
+                    {% else %}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('testimony') }}">Témoignages</a>
                     </li>
+                    {% endif %}
                     {% if app.user %}
                         <li class="nav-item">
                             <a class="nav-link warning" href="{{ path('app_logout') }}">Se déconnecter</a>

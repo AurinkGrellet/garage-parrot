@@ -4,7 +4,13 @@
 {% block body %}
     <h1 class="text-center">Bienvenue au garage Vincent Parrot</h1>
 
+    <!-- Résumé -->
     <p>
         {{ include('home/_summary.html.twig') }}
     </p>
+
+    <!-- Témoignages -->
+    <hr class="mt-5">
+    <h2 class="text-center">Témoignages</h2>
+    {{ include('/testimony/_testimonialslist.html.twig') }}
 {% endblock %}

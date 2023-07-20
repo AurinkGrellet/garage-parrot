@@ -3,7 +3,10 @@
 {% block title %}Modération des témoignages clients{% endblock %}
 
 {% block body %}
-    {% for testimonial in testimonials %}
-        
-    {% endfor %}
+{% if action == 'approve' %}
+    <div class="text-center bold">Témoignage approuvé avec succès.</div>
+{% elseif action == 'delete' %}
+    <div class="text-center bold">Témoignage suprimé avec succès.</div>
+{% endif %}
+{{ include('/testimony/_testimonialslist.html.twig') }}
 {% endblock %}
