@@ -26,8 +26,12 @@ L'application est maintenant disponible en local avec toutes ses fonctions !
 # Utilisation de l'application
 2 utilisateurs sont créés par défaut : 
 - Vincent Parrot, Administrateur
-  E-mail : vincent.parrot@gmail.com
-  Mot de passe : CJ1mK8vOf27IzHew
+
+  E-mail : `vincent.parrot@gmail.com`
+  
+  Mot de passe : `CJ1mK8vOf27IzHew`
 - Camille Dupont, Employée
-  E-mail : camille@gmail.com
-  Mot de passe : 15gSqsejtdIw
+  
+  E-mail : `camille@gmail.com`
+  
+  Mot de passe : `15gSqsejtdIw`
