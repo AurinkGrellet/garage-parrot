@@ -14,7 +14,7 @@ Vous devez aussi avoir un serveur en local comme [XAMPP](https://www.apachefrien
 Voici les étapes à suivre : 
 
 1. Cloner le dépot : `git clone https://github.com/AurinkGrellet/garage-parrot.git`
-2. Rendez-vous dans le répertoire de l'application avec un terminal
+2. Rendez-vous dans le répertoire de l'application avec un interpréteur de commandes (cmd.exe ou autre)
 3. Exécutez la commande `composer install`
 4. Exécutez la commande `php bin/console doctrine:migrations:migrate`
 5. Configurez le paramètre 'DATABASE_URL' du fichier .env avec les paramètres de connexion à votre base de donnée locale
