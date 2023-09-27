@@ -71,6 +71,7 @@ class ContactController extends AbstractController
         }
 
         return $this->render('contact/contact.html.twig', [
+            'title' => 'Nous contacter',
             'form' => $form,
             'phone' => $garagePhone
         ]);

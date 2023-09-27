@@ -3,54 +3,45 @@
 
 {% block title %}Garage Vincent Parrot{% endblock %}
 {% block body %}
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th class="text-left align-top" scope="col">
-                <div>Titre de l'annonce</div>
-            </th>
-            <th class="text-center align-top" scope="col">
-                <div>Prix</div>
-                <div>
-                    <label for="pricelow">Min</label>
-                    <input class="form-control" id="pricelow" type="number" onchange="filter('pricelow')" />
-                </div>
-                <div>
-                    <label for="pricelow">Max</label>
-                    <input class="form-control" id="pricehigh" class="ml-1" type="number" onchange="filter('pricehigh');" />
-                </div>
-            </th>
-            <th class="text-left align-top" scope="col">
-                <div>Année de mise en circulation</div>
-                <div>
-                    <label for="year"></label>
-                    <input class="form-control" id="year" class="ml-1" type="number" onchange="filter('year');" />
-                </div>
-            </th>
-            <th class="text-left align-top" scope="col">
-                <div>Kilométrage</div>
-                <div>
-                    <label for="km"></label>
-                    <input class="form-control" id="km" class="ml-1" type="number" onchange="filter('km');" />
-                    <select class="form-select" aria-label="Type de filtre" id="kmType">
-                        <option selected>>=</option>
-                        <option><=</option>
-                    </select>
-                </div>
-             </th>
-            <th class="text-center align-top" scope="col">
-                Images
-            </th>
-            <th class="text-center align-top" scope="col">
-                &nbsp;
-            </th>
-        </tr>
-    </thead>
-    <tbody id="car-loop-container">
+<div class="container">
+    <!-- Filters -->
+    <div class="row" id="filterDiv">
+        <div class="wrap" id="km" role="group" aria-labelledby="multi-lbl" style="--kmA: 0; --kmB: 500000; --min: 0; --max: 500000">
+            <div id="multi-lbl">Kilométrage</div>
+            <label class="sr-only" for="kmA">Value A:</label>
+            <input id="kmA" type="range" min="0" value="0" max="500000" onchange="filter()"/>
+            <output for="kmA" style="--c: var(--kmA)"></output>
+            <label class="sr-only" for="kmB">Value B:</label>
+            <input id="kmB" type="range" min="0" value="500000" max="500000" onchange="filter()"/>
+            <output for="kmB" style="--c: var(--kmB)"></output>
+        </div>
+        <div class="wrap" id="price" role="group" aria-labelledby="multi-lbl2" style="--priceA: 0; --priceB: 100000; --min: 0; --max: 100000">
+            <div id="multi-lbl2">Prix</div>
+            <label class="sr-only" for="priceA">Value A:</label>
+            <input id="priceA" type="range" min="0" value="0" max="100000" onchange="filter()"/>
+            <output for="priceA" style="--c: var(--priceA)"></output>
+            <label class="sr-only" for="priceB">Value B:</label>
+            <input id="priceB" type="range" min="0" value="100000" max="100000" onchange="filter()"/>
+            <output for="priceB" style="--c: var(--priceB)"></output>
+        </div>
+        <div class="wrap" id="year" role="group" aria-labelledby="multi-lbl3" style="--yearA: 1950; --yearB: 2050; --min: 1950; --max: 2050">
+            <div id="multi-lbl3">Années</div>
+            <label class="sr-only" for="yearA">Value A:</label>
+            <input id="yearA" type="range" min="1950" value="1950" max="2050" onchange="filter()"/>
+            <output for="yearA" style="--c: var(--yearA)"></output>
+            <label class="sr-only" for="yearB">Value B:</label>
+            <input id="yearB" type="range" min="1950" value="2050" max="2050" onchange="filter()"/>
+            <output for="yearB" style="--c: var(--yearB)"></output>
+        </div>
+        <!-- Pour filter : onchange=filter('id') -->
+    </div>
+
+    <!-- Cars -->
+    <div class="row" id="car-loop-container">
         {{ include('cars/loop.html.twig') }}
-    </tbody>
-</table>
+    </div>
+</div>
 {% endblock %}
 {% block javascripts %}
-    <script type="text/javascript" src="../js/ajax.js"></script>  
+    <script type="text/javascript" src="../js/filters.js"></script>  
 {% endblock %}

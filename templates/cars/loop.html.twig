@@ -1,23 +1,24 @@
 {% for car in cars %}
-    <tr>
-        <td style='word-wrap: break-word;min-width: 500px;max-width: 500px'>
-            <h5 class="text-info">
+<div class="col-sm-4 mb-2">
+    <div class="card h-100" style="width: 20rem;">
+        <img class="class-img-top" src="images/{{ car.image }}" alt="Photo voiture">
+        <div class="position-absolute align-items-top badge badge-dark m-2">
+            {{ car.price }} €
+        </div>
+        <div class="card-body">
+            <h4 class="card-text">
                 {{ car.title }}
-            </h5>
-        </td>
-        <td style='word-wrap: break-word;min-width: 500px;max-width: 500px'>
-            <h5 class="text-info">
-                {{ car.price }}
-            </h5>
-        </td>
-        <td class="text-center">
-            {{ car.year }}
-        </td>
-        <td class="text-center">
-            {{ car.km }}
-        </td>
-        <td class="text-center">
-            <img src="images/{{ car.image }}">
-        </td>
-    </tr>
+            </h4>
+            <div class="card-text">
+                Année : {{ car.year }}
+            </div>
+            <div class="card-text">
+                {{ car.km }} km
+            </div>
+            <div class="card-text">
+
+            </div>
+        </div>
+    </div>
+</div>
 {% endfor %}

@@ -43,6 +43,7 @@ class TestimonyController extends AbstractController
             return $this->redirectToRoute('homepage');
         }
         return $this->render('testimony/testimony.html.twig', [
+            'title' => 'Témoignages',
             'form' => $form
         ]);
     }

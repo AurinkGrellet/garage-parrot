@@ -14,6 +14,7 @@ class HomeController extends AbstractController
     {
         $testimonials = $repository->findBy(['approved' => true]);
         return $this->render('home/homepage.html.twig', [
+            'title' => 'Accueil',
             'testimonials' => $testimonials
         ]);
     }

@@ -50,6 +50,7 @@ class NewCarController extends AbstractController
         }
         
         return $this->render('employee/newcar.html.twig', [
+            'title' => 'Ajouter une voiture',
             'form' => $form,
             'carAdded' => $carAdded
         ]);

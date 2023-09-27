@@ -17,6 +17,7 @@ class CarsController extends AbstractController
         $cars = $repository->findAll();
 
         return $this->render('cars/cars.html.twig', [
+            'title' => 'Voitures',
             'cars' => $cars,
         ]);
     }
@@ -28,60 +29,37 @@ class CarsController extends AbstractController
         return $response->setData(['template' => $template]);
     }
 
-    private function filterByPrice($request, $repository, $comparator) {
-        $value = $request->request->all()['value'];
-        $cars = $repository->filterByField('price', $value, $comparator);
-        return $this->configAjaxResponse($cars);
-    }
-
-    private function filterByPriceBetween($request, $repository) {
-        $valuelow = $request->request->all()['valuelow'];
-        $valuehigh = $request->request->all()['valuehigh'];
-        $cars = $repository->filterByFieldBetween('price', $valuelow, $valuehigh);
-        return $this->configAjaxResponse($cars);
-    }
-
-    #[Route('/cars/filter/pricelow')]
+    #[Route('/cars/filter')]
     public function filterPriceLow(CarRepository $repository, Request $request): JsonResponse
     {
-        return $this->filterByPrice($request, $repository, '>=');
-    }
+        $fields = [];
+        $lowerValues = [];
+        $higherValues = [];
+        
+        $filters = $request->request->all();
+        $valueA = 0;
+        foreach ($filters as $id=>$value) {
+            if(str_contains($id, 'km')) $field = "km";
+            else if(str_contains($id, 'price')) $field = "price";
+            else if(str_contains($id, 'year')) $field = "year";
+            
+            if (!in_array($field, $fields)) {
+                array_push($fields, $field);
+                $valueA = $value;
+            }
+            else {
+                if ($valueA <= $value) {
+                    array_push($lowerValues, $valueA);
+                    array_push($higherValues, $value);
+                }
+                else {
+                    array_push($lowerValues, $value);
+                    array_push($higherValues, $valueA);
+                }
+            }
+        }
 
-    #[Route('/cars/filter/pricehigh')]
-    public function filterPriceHigh(CarRepository $repository, Request $request): JsonResponse
-    {
-        return $this->filterByPrice($request, $repository, '<=');
-    }
-
-    #[Route('/cars/filter/pricebetween')]
-    public function filterPriceBetween(CarRepository $repository, Request $request): JsonResponse
-    {
-        return $this->filterByPriceBetween($request, $repository);
-    }
-
-    #[Route('/cars/filter/km')]
-    public function filterKm(CarRepository $repository, Request $request): JsonResponse
-    {
-        $params = $request->request->all();
-        $value = $params['value'];
-        $comparator = $params['type'];
-        $cars = $repository->filterByField('km', $value, $comparator);
+        $cars = $repository->filterByFieldsBetween($fields, $lowerValues, $higherValues);
         return $this->configAjaxResponse($cars);
     }
-
-    #[Route('/cars/filter/year')]
-    public function filterYear(CarRepository $repository, Request $request): JsonResponse
-    {
-        $value = $request->request->all()['value'];
-        $cars = $repository->filterByField('year', $value, '=');
-        return $this->configAjaxResponse($cars);
-    }
-
-    /*#[Route('/cars/{id}', name: ('cars_showone'))]
-    public function showOne(): Response
-    {
-        return $this->render('cars/cars.html.twig', [
-            'controller_name' => 'CarsController',
-        ]);
-    }*/
 }

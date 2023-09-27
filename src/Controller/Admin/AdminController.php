@@ -65,6 +65,7 @@ class AdminController extends AbstractController
     }
 
     return $this->render('admin/admin.html.twig', [
+        'title' => 'Accueil administrateur',
         'formOpening' => $formOpening->createView(),
         'formHomepage' => $formHomepage->createView()
     ]);

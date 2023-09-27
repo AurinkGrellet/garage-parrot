@@ -8,9 +8,16 @@
         <div class="text-left header">
             <h2><img class="mr-2" src="{{ app.request.getBasePath()~'/logo.png' }}" >Garage V. Parrot</h2>
         </div>
+
         <!-- menu -->
-        <nav class="navbar navbar-expand-lg mb-3">
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <nav class="navbar navbar-dark navbar-expand-md mb-3 row justify-content-between flex-row-reverse">
+            <div class="d-md-block d-lg-none container row justify-content-center align-top">
+                <h3 class="text-light">{{ title }}</h3>
+            </div>
+            <button class="navbar-toggler align-center row px-1 ml-0" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
                         {% if is_granted('ROLE_ADMIN') %}
@@ -33,7 +40,7 @@
                         </li>
                     {% endif %}
                 </ul>
-                <ul class="navbar-nav ml-auto text-right">
+                <ul class="navbar-nav ml-auto">
                     {% if is_granted('ROLE_ADMIN') %}
                         <li class="nav-item">
                             <a class="nav-link" href="{{ path('add_employee') }}">Ajouter un employé</a>
@@ -57,12 +64,12 @@
                     {% endif %}
                 </ul>
             </div>
-        </nav>        
+        </nav>
     </div>
 {% endblock %}
 {% block body %}{% endblock %}
 {% block footer %}
-    <footer class="mt-auto pt-2 text-center text-lg-start">
+    <footer class="mt-auto pt-2 text-center text-lg-start footer">
         <p class="text-center">
             Horaires d'ouverture du garage :
             <br/>

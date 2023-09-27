@@ -13,6 +13,7 @@ class DashboardController extends AbstractController
     {
         $user = $this->getUser();
         return $this->render('employee/dashboard.html.twig', [
+            'title' => 'Accueil employé',
             'commonName' => $user->getCommonName()
         ]);
     }

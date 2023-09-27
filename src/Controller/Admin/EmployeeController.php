@@ -39,6 +39,7 @@ class EmployeeController extends AbstractController
         }
 
         return $this->render('user/new.html.twig', [
+            'title' => 'Ajouter un employé',
             'form' => $form->createView(),
         ]);
     }

@@ -21,7 +21,7 @@ p, a {
     font-family: 'Barlow';
 }
 
-p, li {
+p, li, #card-text {
     color: #262526;
 }
 
@@ -40,6 +40,14 @@ nav a {
     color: #F2F2F2;
 }
 
+nav button span {
+    color: #F2F2F2;
+}
+
+.navbar-nav .nav-item-right {
+    margin-right: 25px;
+}
+
 footer {
     background-color: #262526;
     color: #F2F2F2;
@@ -53,10 +61,123 @@ button {
     color: #F2F2F2;
 }
 
+.testimonial {
+    min-width:100% !important;
+}
+
 .warning {
     color: #D94350;
 }
 
 .emphasize {
     color: #D9777F;
+}
+
+
+.wrap {
+    --dif: calc(var(--max) - var(--min));
+    display: grid;
+    grid-template: repeat(2, max-content) 1em/ 1fr 1fr;
+    overflow: hidden;
+    position: relative;
+    margin: 1em auto;
+    width: 20em;
+    background: linear-gradient(0deg, #ccc 1em, transparent 0);
+    font-family: ubuntu mono, consolas, monaco, monospace;
+}
+.wrap::before, .wrap::after {
+    grid-column: 1/ span 2;
+    grid-row: 3;
+    height: 100%;
+    background: #95a;
+    content: '';
+}
+.wrap#km::before {
+    margin-left: calc((var(--kmA) - var(--min))/var(--dif)*100%);
+    width: calc((var(--kmB) - var(--kmA))/var(--dif)*100%);
+}
+.wrap#price::before {
+    margin-left: calc((var(--priceA) - var(--min))/var(--dif)*100%);
+    width: calc((var(--priceB) - var(--priceA))/var(--dif)*100%);
+}
+.wrap#km::after {
+    margin-left: calc((var(--kmB) - var(--min))/var(--dif)*100%);
+    width: calc((var(--kmA) - var(--kmB))/var(--dif)*100%);
+}
+.wrap#price::after {
+    margin-left: calc((var(--priceB) - var(--min))/var(--dif)*100%);
+    width: calc((var(--priceA) - var(--priceB))/var(--dif)*100%);
+}
+.wrap#year::before {
+    margin-left: calc((var(--yearA) - var(--min))/var(--dif)*100%);
+    width: calc((var(--yearB) - var(--yearA))/var(--dif)*100%);
+}
+.wrap#year::after {
+    margin-left: calc((var(--yearB) - var(--min))/var(--dif)*100%);
+    width: calc((var(--yearA) - var(--yearB))/var(--dif)*100%);
+}
+[id='multi-lbl'] {
+    grid-column: 1/ span 2;
+}
+.sr-only {
+    position: absolute;
+    clip-path: inset(50%);
+}
+input[type='range'] {
+    grid-column: 1/ span 2;
+    grid-row: 3;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    margin: 0;
+    background: none;
+    color: #000;
+    pointer-events: none;
+}
+input[type='range']::-webkit-slider-runnable-track, input[type='range']::-webkit-slider-thumb, input[type='range'] {
+    -webkit-appearance: none;
+}
+input[type='range']::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 100%;
+    background: none;
+}
+input[type='range']::-moz-range-track {
+    width: 100%;
+    height: 100%;
+    background: none;
+}
+input[type='range']::-webkit-slider-thumb {
+    border: none;
+    width: 1em;
+    height: 1em;
+    border-radius: 0;
+    background: currentcolor;
+    pointer-events: auto;
+}
+input[type='range']::-moz-range-thumb {
+    border: none;
+    width: 1em;
+    height: 1em;
+    border-radius: 0;
+    background: currentcolor;
+    pointer-events: auto;
+}
+output {
+    grid-row: 2;
+}
+output:last-child {
+    text-align: right;
+}
+#km > output::after {
+    counter-reset: c var(--c);
+    content: counter(c) 'km';
+}
+#price > output::after {
+    counter-reset: c var(--c);
+    content: counter(c) '€';
+}
+#year > output::after {
+    counter-reset: c var(--c);
+    content: counter(c);
 }

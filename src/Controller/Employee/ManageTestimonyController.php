@@ -20,6 +20,7 @@ class ManageTestimonyController extends AbstractController
         }
         $testimonials = $repository->findBy(['approved' => false]);
         return $this->render('employee/managetestimonials.html.twig', [
+            'title' => 'Modérer les témoignages',
             'testimonials' => $testimonials,
             'action' => $action
         ]);

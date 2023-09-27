@@ -29,6 +29,20 @@ class CarRepository extends ServiceEntityRepository
                 ->getResult();
     }
 
+    public function filterByFieldsBetween($fields, $lowerValues, $higherValues): array
+    {
+        $query = $this->createQueryBuilder('c');
+
+        for ($i = 0; $i < count($fields); $i++) {
+            $query = $query->andWhere('c.'.$fields[$i].' >= :valmin'.$i)
+            ->andWhere('c.'.$fields[$i].' <= :valmax'.$i)
+            ->setParameter('valmin'.$i, $lowerValues[$i])
+            ->setParameter('valmax'.$i, $higherValues[$i]);
+        }
+        return $query->getQuery()
+        ->getResult();
+    }
+
     /**
      * @return Car[] Returns an array of Car objects
      */
