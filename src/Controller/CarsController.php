@@ -30,7 +30,7 @@ class CarsController extends AbstractController
     }
 
     #[Route('/cars/filter')]
-    public function filterPriceLow(CarRepository $repository, Request $request): JsonResponse
+    public function filter(CarRepository $repository, Request $request): JsonResponse
     {
         $fields = [];
         $lowerValues = [];
